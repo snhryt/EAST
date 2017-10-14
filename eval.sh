@@ -13,19 +13,21 @@ set -eu
 #   tar -xzvf "resnet_v1_50_2016_08_28.tar.gz"
 # fi
 
-pip3 install -U Shapely \
-                Flask \
-                matplotlib \
-                scipy \
-                plumbum \
-                numpy \
-                ipython \
-                Pillow
+# pip3 install -U Flask \
+#                 Pillow \
+#                 Shapely \
+#                 ipython \
+#                 matplotlib \
+#                 numpy \
+#                 plumbum \
+#                 scipy \
+# apt install -qqy python3-tk
 
-apt install -qqy python3-tk
-
+TARGET_DIRPATH="/workdir/datasets/AmazonBookCoverImages/genres"
+OUTPUT_DIRPATH="/workdir/results/SegmentedTextRegionImages_EAST/tmp"
 python3 eval.py \
-        --test_data_path=/workdir/datasets/AmazonBookCoverImages/random100 \
+        --test_data_path=${TARGET_DIRPATH} \
         --gpu_list=0,1 \
         --checkpoint_path=./east_icdar2015_resnet_v1_50_rbox \
-        --output_dir=/workdir/results/SegmentedTextRegionImages_EAST/random100
+        --output_dir=${OUTPUT_DIRPATH} \
+        --no_write_images
