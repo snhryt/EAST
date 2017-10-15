@@ -173,7 +173,7 @@ def main(argv=None):
                     boxes[:, :, 0] /= ratio_w
                     boxes[:, :, 1] /= ratio_h
 
-                duration = time.time() - start_time
+                # duration = time.time() - start_time
                 # print('[timing] {}'.format(duration))
 
                 # save to file
@@ -190,7 +190,7 @@ def main(argv=None):
                             if (np.linalg.norm(box[0] - box[1]) < 5
                                 or np.linalg.norm(box[3]-box[0]) < 5):
                                 continue
-                            f.write('{},{},{},{},{},{},{},{}\r\n'.format(
+                            f.write('{},{},{},{},{},{},{},{}\n'.format(
                                 box[0, 0], box[0, 1], box[1, 0], box[1, 1], box[2, 0], box[2, 1], box[3, 0], box[3, 1],
                             ))
                             if not FLAGS.no_write_images:
@@ -198,9 +198,9 @@ def main(argv=None):
                                     im[:, :, ::-1], [box.astype(np.int32).reshape((-1, 1, 2))],
                                     True, color=(255, 255, 0), thickness=1
                                 )
-                if not FLAGS.no_write_images:
-                    img_path = os.path.join(FLAGS.output_dir, os.path.basename(im_fn))
-                    cv2.imwrite(img_path, im[:, :, ::-1])
+                # if not FLAGS.no_write_images:
+                #     img_path = os.path.join(FLAGS.output_dir, os.path.basename(im_fn))
+                #     cv2.imwrite(img_path, im[:, :, ::-1])
 
 if __name__ == '__main__':
     tf.app.run()
