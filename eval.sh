@@ -23,8 +23,8 @@ set -eu
 #                 scipy \
 # apt install -qqy python3-tk
 
-TARGET_DIRPATH="/workdir/datasets/AmazonBookCoverImages/genres"
-OUTPUT_DIRPATH="/workdir/results/SegmentedTextRegionImages_EAST/tmp"
+TARGET_DIRPATH="/workdir/datasets/AmazonBookCoverImages/random100"
+OUTPUT_DIRPATH="/workdir/results/TextSegmentation/BoundingBoxInfo_random100"
 python3 eval.py \
         --test_data_path=${TARGET_DIRPATH} \
         --gpu_list=0,1 \
